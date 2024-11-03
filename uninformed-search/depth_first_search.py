@@ -21,6 +21,7 @@ def is_cycle(node, k=30):
 
 # Implement the depth-first search algorithm using a recursive approach.
 def depth_first_search_recursive(problem, node=None):
+    """Search deepest nodes in the search tree first."""
     
     # Initialize the node with the initial state of the problem if not provided.
     if node is None:
@@ -49,3 +50,35 @@ def depth_first_search_recursive(problem, node=None):
         
         # If no solution is found after exploring all children, return failure.
         return failure
+
+# Implement the depth-first search algorithm using an iterative approach.
+def depth_first_search_iterative(problem):
+    """Searches the deepest nodes in the search tree first."""
+
+    # Initialize the frontier using a Last-In-First-Out (LIFO) behavior, resembling a stack.
+    frontier = LIFOQueue([Node(problem.initial)])
+
+    # Initialize the result to the failure node, indicating no solution found yet.
+    result = failure
+    
+    # Continue the search loop until the frontier is empty, indicating all nodes have been explored.
+    while frontier:
+
+        # Remove and return the last element added to the frontier (stack behavior).
+        node = frontier.pop()
+
+        # Check if the current node's state is the goal state.
+        if problem.is_goal(node.state):
+            return node  # Return the goal node if found.
+        
+        # Check if the current node has a cycle to avoid revisiting nodes.
+        elif not is_cycle(node):
+
+            # Expand the current node to generate its child nodes.
+            for child in node.expand(problem):
+
+                # Add each child node to the frontier for further exploration.
+                frontier.append(child)
+    
+    # Return the result, which is the failure node if no solution was found.
+    return result
