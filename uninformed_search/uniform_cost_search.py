@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')  # Add the parent directory to the system path to allow importing modules located there.
 
 # Import the best-first search algorithm from the specified module.
-from best_first_search import best_first_search  # Import the best-first search function to use in implementing uniform-cost search.
+from best_first_search import *  # Import the best-first search function to use in implementing uniform-cost search.
 
 # Define the cost function g for uniform-cost search.
 def g(n):
