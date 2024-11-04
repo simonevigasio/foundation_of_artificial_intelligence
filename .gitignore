@@ -1,6 +1,5 @@
 __pycache__/
-search_algorithms/__pycache__/
-search_algorithms/uninformed_search/__pycache__
-problems/__pycache__
+problems/__pycache__/
+uniformed_search/__pycache__/
 .venv/
 .vscode/

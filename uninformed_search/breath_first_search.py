@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')
 
 # Import essential classes and functions required to work with the search problem.
-from search_problem_init import *
+from init import *
 
 # Implement the breadth-first search algorithm.
 def breadth_first_search(problem):

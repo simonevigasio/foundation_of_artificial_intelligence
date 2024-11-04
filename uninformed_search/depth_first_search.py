@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')
 
 # Import essential classes and functions required to work with the search problem.
-from search_problem_init import *
+from init import *
 
 # Function to check if the search is moving backward for 'k' iterations 
 # and encountering the same node repeatedly, indicating a cycle.

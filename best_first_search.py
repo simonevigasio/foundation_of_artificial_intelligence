@@ -1,5 +1,5 @@
 # Import essential classes and functions for the search algorithm.
-from search_problem_init import Node, PriorityQueue, failure  # Import the Node class, PriorityQueue for managing the frontier, and failure constant.
+from init import Node, PriorityQueue, failure  # Import the Node class, PriorityQueue for managing the frontier, and failure constant.
 
 def best_first_search(problem, f):
     """
