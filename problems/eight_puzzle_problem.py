@@ -8,6 +8,7 @@ from search_algorithms.search_problem_init import Problem, Node, cutoff, failure
 
 # Import uninformed search algorithms for resolving the problem.
 from uninformed_search.breath_first_search import breadth_first_search  # Import the breadth-first search algorithm.
+from uninformed_search.uniform_cost_search import uniform_cost_search # Import the uniform-cost search algorithm.
 
 # Import utility function to trace the path of nodes.
 from utility import path_states  # Import the 'path_states' function to help retrieve the path of states.
@@ -70,5 +71,5 @@ class EightPuzzle(Problem):
 e1 = EightPuzzle((8, 6, 7, 2, 5, 4, 3, 0, 1))
 
 # Perform a breadth-first search to solve the puzzle and print the path of states.
-for s in path_states(breadth_first_search(e1)):
+for s in path_states(uniform_cost_search(e1)):
     print(s)  # Print each state in the path from the initial to the goal state.

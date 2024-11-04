@@ -33,6 +33,7 @@ def best_first_search(problem, f):
         
         # Expand the current node to generate its child nodes.
         for child in node.expand(problem):
+
             s = child.state  # Get the state of the child node.
             
             # Check if the state is new or if a better path to this state is found.

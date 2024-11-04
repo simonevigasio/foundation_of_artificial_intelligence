@@ -41,6 +41,9 @@ class Node():
   # Calculate the length of the path from the root to this node
   def __len__(self): return 0 if self.parent is None else (1 + len(self.parent))
 
+  # Handle Node with the same value in the Priority Queue
+  def __lt__(self, other): return self.path_cost < other.path_cost
+
   def expand(self, problem):
     """Generate all child nodes reachable in one step from this node."""
     return [self.child_node(problem, action) for action in problem.actions(self.state)]
@@ -76,8 +79,7 @@ class PriorityQueue():
 
   def add(self, item):
     """Add an item to the priority queue."""
-    pair = (self.key(item), item)
-    heapq.heappush(self.items, pair)
+    heapq.heappush(self.items, (self.key(item), item))
 
   def pop(self):
     """Remove and return the item with the minimum f(item) value."""
