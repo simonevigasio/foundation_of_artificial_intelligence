@@ -1,10 +1,9 @@
 # Enable the filesystem to access the parent directory and specific subdirectories.
 import sys
 sys.path.append('../')  # Add the parent directory to the system path for module imports.
-sys.path.append('../search_algorithms')  # Add the 'search_algorithms' subdirectory to the path.
 
 # Import essential classes and functions required to work with the search problem.
-from search_algorithms.search_problem_init import Problem, Node, cutoff, failure  # Import classes and constants for search problems.
+from init import Problem, Node, cutoff, failure  # Import classes and constants for search problems.
 
 # Import uninformed search algorithms for resolving the problem.
 from uninformed_search.breath_first_search import breadth_first_search  # Import the breadth-first search algorithm.

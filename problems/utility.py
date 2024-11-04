@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')  # Add the parent directory to the system path to allow the import of modules from it.
 
 # Import essential classes and functions required to work with the search problem.
-from search_algorithms.search_problem_init import cutoff, failure  # Import 'cutoff' and 'failure' indicators from the specified module.
+from init import cutoff, failure  # Import 'cutoff' and 'failure' indicators from the specified module.
 
 # Retrieve the path of nodes starting from the one given as a parameter.
 def path_states(node):
