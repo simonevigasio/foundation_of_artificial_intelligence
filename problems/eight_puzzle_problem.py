@@ -5,13 +5,6 @@ sys.path.append('../')  # Add the parent directory to the system path for module
 # Import essential classes and functions required to work with the search problem.
 from init import Problem, Node, cutoff, failure  # Import classes and constants for search problems.
 
-# Import uninformed search algorithms for resolving the problem.
-from uninformed_search.breath_first_search import breadth_first_search  # Import the breadth-first search algorithm.
-from uninformed_search.uniform_cost_search import uniform_cost_search # Import the uniform-cost search algorithm.
-
-# Import utility function to trace the path of nodes.
-from utility import path_states  # Import the 'path_states' function to help retrieve the path of states.
-
 # Define the EightPuzzle class, inheriting from the Problem class.
 class EightPuzzle(Problem):
     """
@@ -65,10 +58,3 @@ class EightPuzzle(Problem):
         blank = state.index(0)  # Find the index of the blank tile (0).
         s[action], s[blank] = s[blank], s[action]  # Swap the blank tile with the tile at the action index.
         return tuple(s)  # Convert the list back to a tuple and return it.
-
-# Create an instance of the EightPuzzle problem with a specific initial state.
-e1 = EightPuzzle((8, 6, 7, 2, 5, 4, 3, 0, 1))
-
-# Perform a breadth-first search to solve the puzzle and print the path of states.
-for s in path_states(uniform_cost_search(e1)):
-    print(s)  # Print each state in the path from the initial to the goal state.
