@@ -5,6 +5,9 @@ sys.path.append('../')  # Add the parent directory to the system path for module
 # Import essential classes and functions required to work with the search problem.
 from init import Problem, Node, cutoff, failure  # Import classes and constants for search problems.
 
+# Import the hamming_distance function from the utility module.
+from utility import hamming_distance
+
 # Define the EightPuzzle class, inheriting from the Problem class.
 class EightPuzzle(Problem):
     """
@@ -58,3 +61,20 @@ class EightPuzzle(Problem):
         blank = state.index(0)  # Find the index of the blank tile (0).
         s[action], s[blank] = s[blank], s[action]  # Swap the blank tile with the tile at the action index.
         return tuple(s)  # Convert the list back to a tuple and return it.
+    
+    # Define the heuristic function as a method of a class.
+    def h(self, node):
+        """
+        Heuristic function for estimating the cost to reach the goal from the given node.
+        
+        This heuristic calculates the Hamming distance between the current state of the node
+        and the goal state, which represents the number of differing positions between them.
+        
+        Args:
+            node: A Node object representing a state in the search tree.
+            
+        Returns:
+            An integer representing the Hamming distance between the node's state and the goal state.
+        """
+        # Return the Hamming distance between the current node's state and the goal state.
+        return hamming_distance(node.state, self.goal)

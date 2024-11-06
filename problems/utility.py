@@ -23,3 +23,22 @@ def path_states(node):
     
     # Recursively call path_states on the parent node and concatenate the current node's state.
     return path_states(node.parent) + [node.state]  # Build the path by appending the current node's state to the path from the root.
+
+# Implementing the Hamming distance
+def hamming_distance(A, B):
+    """
+    Calculate the Hamming distance between two vectors A and B.
+    
+    The Hamming distance is defined as the number of positions where
+    the corresponding elements of two sequences differ.
+    
+    Args:
+        A: The first vector or sequence (e.g., a string or list).
+        B: The second vector or sequence (e.g., a string or list).
+        
+    Returns:
+        An integer representing the number of differing positions between A and B.
+    """
+    # Use a generator expression to iterate through pairs of elements from A and B,
+    # and count the number of positions where the elements are different.
+    return sum(a != b for a, b in zip(A, B))
