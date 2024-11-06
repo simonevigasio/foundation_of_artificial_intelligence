@@ -85,40 +85,44 @@ class PriorityQueue():
     """Remove and return the item with the minimum f(item) value."""
     return heapq.heappop(self.items)[1]
   
-# working progress...
-
+# Define the class used for solving Constraint Satisfation Problems
 class CSP():
   """Constraint Satisfation Problem."""
 
   def __init__(self, domains=[], constraints=[]):
     """
-    init
+    Initialization of the problem.
 
     Args: 
       domains: array of tuples contrining the values of each variable
-      constraints = matrix of arrays contrainig tuples of not accepted couple values
+      constraints: matrix of arrays contrainig tuples of not accepted couple values
+      initial: initial state of the assignments
+      failure: case where a solution is not reachable
     """
     self.domains = domains
+    self.constraints = constraints
     self.initial = [None] * len(domains)
     self.failure = [None] * len(domains)
-    self.constraints = constraints
 
-  def is_goal(self, assignment): # not checking
-    #print(assignment)
+  def is_goal(self, assignment): # miss further checking
+    """Check whether the assignment is a possible goal."""
     for var in assignment:
       if var is None:
         return False
     return True 
 
   def select_unassigned_variable(self, assignment): 
+    """Select the first variable without a value into the assignment."""
     for var in range(len(assignment)): 
       if assignment[var] is None: 
         return var
 
   def order_domain_values(self, var, assignment): 
+    """Receive all the values in the domain of the givem variable."""
     return self.domains[var]
 
   def is_consistent(self, var, value, assignment): 
+    """Check the validity of the assignment given the new value."""
     if value not in self.domains[var]: return False
     dim = len(self.domains)
     for i in range(dim):
@@ -131,28 +135,9 @@ class CSP():
     return True 
 
   def add_value(self, var, value, assignment): 
+    """Add to the assignment the given value to the given variable."""
     assignment[var] = value
 
   def remove_value(self, var, assignment): 
+    """Remove the value from the given variable."""
     assignment[var] = None
-
-# test
-domains = [(1, 2, 3), (1, 2, 3), (1, 2, 3)]
-constraints = [
-  [[], [(1, 1)], [(2, 2), (3, 3)]],
-  [[(1, 1)], [], [(1, 2)]],
-  [[(2, 2), (3, 3)], [(1, 2)], []]
-]
-csp = CSP(domains=domains, constraints=constraints)
-print(csp.constraints) # good
-
-assignment = csp.initial
-if csp.is_consistent(0, 1, assignment=assignment):
-  csp.add_value(0, 1, assignment=assignment)
-  print(assignment)
-
-if csp.is_consistent(1, 1, assignment=assignment):
-  csp.add_value(1, 1, assignment=assignment)
-  print(assignment)
-
-print(assignment)
